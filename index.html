@@ -1,29 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hey Cheptoo...</title>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: 'Nunito', sans-serif;
   min-height: 100vh;
   background: linear-gradient(135deg, #ff6b9d, #ff8c69, #ffd166);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
+  display: flex; align-items: center; justify-content: center; padding: 16px;
 }
 .card {
-  background: #fff;
-  border-radius: 24px;
-  padding: 28px 20px 24px;
-  width: 100%;
-  max-width: 360px;
-  text-align: center;
+  background: #fff; border-radius: 24px; padding: 28px 20px 24px;
+  width: 100%; max-width: 360px; text-align: center;
   box-shadow: 0 16px 48px rgba(200,60,100,0.25);
   animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1);
 }
-@keyframes popIn {
-  from { transform: scale(0.7); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
+@keyframes popIn { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 .big-icon { font-size: 48px; line-height: 1; margin-bottom: 6px; display: block; animation: bob 1.4s ease-in-out infinite alternate; }
 @keyframes bob { from { transform: translateY(0); } to { transform: translateY(-8px); } }
 h1 { font-family: 'Pacifico', cursive; font-size: 26px; color: #f03e72; margin-bottom: 4px; }
@@ -44,22 +41,16 @@ h1 { font-family: 'Pacifico', cursive; font-size: 26px; color: #f03e72; margin-b
 .screen { display: none; }
 .screen.on { display: block; animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1); }
 .main.off { display: none; }
-
-/* TABS */
 .tabs { display: flex; border-bottom: 2px solid #ffe0eb; margin-bottom: 20px; }
 .tab-btn { flex: 1; padding: 10px 6px; font-size: 13px; font-weight: 800; font-family: 'Nunito', sans-serif; border: none; background: none; cursor: pointer; color: #ccc; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: color 0.2s, border-color 0.2s; -webkit-tap-highlight-color: transparent; }
 .tab-btn.active { color: #f03e72; border-bottom-color: #f03e72; }
 .tab-content { display: none; }
 .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-
-/* SUCCESS TAB 1 */
 .s-icon { font-size: 44px; display: block; margin-bottom: 8px; }
 .s-title { font-family: 'Pacifico', cursive; font-size: 24px; color: #f03e72; margin-bottom: 8px; }
 .s-msg { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 16px; }
 .s-box { background: #fff5f8; border: 1.5px solid #fcc; border-radius: 14px; padding: 14px; font-size: 13px; color: #333; font-weight: 700; text-align: left; line-height: 2.1; }
-
-/* DATE PICKER TAB */
 .dp-title { font-family: 'Pacifico', cursive; font-size: 20px; color: #f03e72; margin-bottom: 6px; }
 .dp-sub { font-size: 12px; color: #aaa; margin-bottom: 18px; line-height: 1.5; }
 .tz-strip { display: flex; gap: 8px; margin-bottom: 18px; }
@@ -69,34 +60,26 @@ h1 { font-family: 'Pacifico', cursive; font-size: 26px; color: #f03e72; margin-b
 .tz-time { font-size: 15px; font-weight: 800; color: #222; margin-top: 2px; }
 .tz-label { font-size: 10px; color: #aaa; }
 label.field-label { display: block; text-align: left; font-size: 12px; font-weight: 800; color: #f03e72; margin-bottom: 5px; }
-input[type="date"], input[type="time"], select {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1.5px solid #fcc;
-  border-radius: 10px;
-  font-size: 14px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-  color: #333;
-  background: #fff;
-  margin-bottom: 14px;
-  outline: none;
-  -webkit-appearance: none;
-  appearance: none;
+input[type="date"], input[type="time"] {
+  width: 100%; padding: 10px 12px; border: 1.5px solid #fcc; border-radius: 10px;
+  font-size: 14px; font-family: 'Nunito', sans-serif; font-weight: 700; color: #333;
+  background: #fff; margin-bottom: 14px; outline: none; -webkit-appearance: none; appearance: none;
 }
-input[type="date"]:focus, input[type="time"]:focus, select:focus { border-color: #f03e72; }
+input:focus { border-color: #f03e72; }
 .food-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
 .food-btn { background: #fff5f8; border: 1.5px solid #fcc; border-radius: 10px; padding: 10px 6px; font-size: 12px; font-weight: 800; font-family: 'Nunito', sans-serif; color: #888; cursor: pointer; transition: all 0.15s; -webkit-tap-highlight-color: transparent; }
 .food-btn.picked { background: #f03e72; border-color: #f03e72; color: #fff; }
 .confirm-btn { width: 100%; background: #f03e72; color: #fff; border: none; border-radius: 50px; padding: 14px; font-size: 16px; font-weight: 800; font-family: 'Nunito', sans-serif; cursor: pointer; box-shadow: 0 4px 14px rgba(240,62,114,0.35); -webkit-tap-highlight-color: transparent; transition: transform 0.1s; }
 .confirm-btn:active { transform: scale(0.97); }
+.confirm-btn:disabled { background: #fcc; box-shadow: none; cursor: not-allowed; }
 .confirmed-box { background: #fff5f8; border: 1.5px solid #fcc; border-radius: 14px; padding: 16px; font-size: 13px; color: #333; font-weight: 700; text-align: left; line-height: 2.1; display: none; }
 .confirmed-box.on { display: block; animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1); }
-
 .confetti-piece { position: fixed; pointer-events: none; z-index: 999; font-size: 20px; animation: fall linear forwards; }
 @keyframes fall { 0% { transform: translateY(-40px) rotate(0deg); opacity: 1; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+.sending-msg { font-size: 12px; color: #f03e72; margin-top: 8px; font-weight: 700; min-height: 18px; }
 </style>
-
+</head>
+<body>
 <div class="card">
   <div class="main" id="main">
     <span class="big-icon">&#128972;</span>
@@ -122,7 +105,6 @@ input[type="date"]:focus, input[type="time"]:focus, select:focus { border-color:
       <button class="tab-btn active" onclick="switchTab('t1',this)">&#128149; Yay!</button>
       <button class="tab-btn" onclick="switchTab('t2',this)">&#128197; Pick a Date</button>
     </div>
-
     <div class="tab-content active" id="t1">
       <span class="s-icon">&#127881;</span>
       <p class="s-title">She said YES!!!</p>
@@ -134,11 +116,9 @@ input[type="date"]:focus, input[type="time"]:focus, select:focus { border-color:
         &#128140; See you on screen soon!
       </div>
     </div>
-
     <div class="tab-content" id="t2">
       <p class="dp-title">Plan our date!</p>
-      <p class="dp-sub">Pick a date and time that works for you in Finland — I'll sort out the Thailand side!</p>
-
+      <p class="dp-sub">Pick a date and time in Finland — I'll sort out the Thailand side!</p>
       <div class="tz-strip">
         <div class="tz-box">
           <span class="tz-flag">&#127467;&#127470;</span>
@@ -153,14 +133,11 @@ input[type="date"]:focus, input[type="time"]:focus, select:focus { border-color:
           <div class="tz-label">ICT (UTC+7)</div>
         </div>
       </div>
-
       <div id="pickerForm">
         <label class="field-label">&#128197; Pick a date</label>
         <input type="date" id="dateInput" onchange="updateTimes()">
-
         <label class="field-label">&#8987; Your time in Finland</label>
         <input type="time" id="timeInput" onchange="updateTimes()">
-
         <label class="field-label">&#127837; What food are you feeling?</label>
         <div class="food-grid">
           <button class="food-btn" onclick="pickFood(this)">&#127829; Pizza</button>
@@ -170,119 +147,136 @@ input[type="date"]:focus, input[type="time"]:focus, select:focus { border-color:
           <button class="food-btn" onclick="pickFood(this)">&#129361; Korean BBQ</button>
           <button class="food-btn" onclick="pickFood(this)">&#127847; Burgers</button>
         </div>
-
-        <button class="confirm-btn" onclick="confirmDate()">Confirm our date! &#127801;</button>
+        <button class="confirm-btn" id="confirmBtn" onclick="confirmDate()">Confirm our date! &#127801;</button>
+        <p class="sending-msg" id="sendingMsg"></p>
       </div>
-
       <div class="confirmed-box" id="confirmedBox"></div>
     </div>
   </div>
 </div>
 
 <script>
-var runCount = 0;
-var labels = ['No','Nope','Still no','Not happening','Please stop','Just say yes','RUN!','Bye!','Can\'t catch me!','Give up!','Say YES!'];
-var noBtn = document.getElementById('noBtn');
-var wrap = document.getElementById('btnWrap');
-var counter = document.getElementById('counter');
-var selectedFood = '';
+  emailjs.init("HqSCpAFCwUSzTIeyg");
+  var runCount = 0;
+  var labels = ['No','Nope','Still no','Not happening','Please stop','Just say yes','RUN!','Bye!','Cant catch me!','Give up!','Say YES!'];
+  var noBtn = document.getElementById('noBtn');
+  var wrap = document.getElementById('btnWrap');
+  var counter = document.getElementById('counter');
+  var selectedFood = '';
 
-function runAway() {
-  runCount++;
-  var w = wrap.offsetWidth;
-  var bw = noBtn.offsetWidth;
-  var maxX = w - bw - 4;
-  var x = Math.floor(Math.random() * maxX);
-  noBtn.style.right = 'auto';
-  noBtn.style.left = x + 'px';
-  noBtn.style.top = (Math.random() > 0.5 ? '-22px' : '42px');
-  noBtn.style.transform = 'rotate(' + (Math.random()*24-12) + 'deg)';
-  noBtn.textContent = labels[Math.min(runCount, labels.length-1)];
-  noBtn.style.fontSize = Math.max(9, 13 - runCount) + 'px';
-  if (runCount >= 2) counter.textContent = 'Ran away ' + runCount + ' times haha';
-}
-
-function sayYes() {
-  document.getElementById('main').classList.add('off');
-  document.getElementById('success').classList.add('on');
-  launch();
-  setDefaultDate();
-  updateTimes();
-}
-
-function switchTab(id, btn) {
-  document.querySelectorAll('.tab-content').forEach(function(t){ t.classList.remove('active'); });
-  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
-}
-
-function setDefaultDate() {
-  var d = new Date();
-  d.setDate(d.getDate() + 3);
-  var y = d.getFullYear();
-  var m = String(d.getMonth()+1).padStart(2,'0');
-  var day = String(d.getDate()).padStart(2,'0');
-  document.getElementById('dateInput').value = y+'-'+m+'-'+day;
-  document.getElementById('timeInput').value = '19:00';
-}
-
-function updateTimes() {
-  var dateVal = document.getElementById('dateInput').value;
-  var timeVal = document.getElementById('timeInput').value;
-  if (!dateVal || !timeVal) return;
-  var parts = dateVal.split('-');
-  var tparts = timeVal.split(':');
-  var fiDate = new Date(+parts[0], +parts[1]-1, +parts[2], +tparts[0], +tparts[1]);
-  var fiH = String(fiDate.getHours()).padStart(2,'0');
-  var fiM = String(fiDate.getMinutes()).padStart(2,'0');
-  document.getElementById('fi-time').textContent = fiH + ':' + fiM;
-  var thDate = new Date(fiDate.getTime() + (4 * 60 * 60 * 1000));
-  var thH = String(thDate.getHours()).padStart(2,'0');
-  var thM = String(thDate.getMinutes()).padStart(2,'0');
-  document.getElementById('th-time').textContent = thH + ':' + thM;
-}
-
-function pickFood(btn) {
-  document.querySelectorAll('.food-btn').forEach(function(b){ b.classList.remove('picked'); });
-  btn.classList.add('picked');
-  selectedFood = btn.textContent;
-}
-
-function confirmDate() {
-  var dateVal = document.getElementById('dateInput').value;
-  var timeVal = document.getElementById('timeInput').value;
-  if (!dateVal || !timeVal) { alert('Pick a date and time first!'); return; }
-  if (!selectedFood) { alert('Pick what food you\'re feeling!'); return; }
-  var parts = dateVal.split('-');
-  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var dateStr = parts[2] + ' ' + months[+parts[1]-1] + ' ' + parts[0];
-  var tparts = timeVal.split(':');
-  var fiDate = new Date(+parts[0], +parts[1]-1, +parts[2], +tparts[0], +tparts[1]);
-  var thDate = new Date(fiDate.getTime() + (4 * 60 * 60 * 1000));
-  var fiStr = String(fiDate.getHours()).padStart(2,'0') + ':' + String(fiDate.getMinutes()).padStart(2,'0');
-  var thStr = String(thDate.getHours()).padStart(2,'0') + ':' + String(thDate.getMinutes()).padStart(2,'0');
-  var box = document.getElementById('confirmedBox');
-  box.innerHTML = '&#127881; Date confirmed!<br><br>&#128197; ' + dateStr + '<br>&#127467;&#127470; Finland: ' + fiStr + ' (EET)<br>&#127481;&#127469; Thailand: ' + thStr + ' (ICT)<br>' + selectedFood + ' night!<br><br>&#128140; He\'ll be waiting on screen!';
-  box.classList.add('on');
-  document.getElementById('pickerForm').style.display = 'none';
-  launch();
-}
-
-function launch() {
-  var items = ['&#10084;','&#127881;','&#127801;','&#10024;','&#128149;'];
-  for (var i = 0; i < 20; i++) {
-    (function(i) {
-      setTimeout(function() {
-        var el = document.createElement('div');
-        el.className = 'confetti-piece';
-        el.innerHTML = items[Math.floor(Math.random() * items.length)];
-        el.style.left = Math.random() * 100 + 'vw';
-        el.style.animationDuration = (1.5 + Math.random() * 2) + 's';
-        document.body.appendChild(el);
-        setTimeout(function() { el.remove(); }, 3500);
-      }, i * 80);
-    })(i);
+  function runAway() {
+    runCount++;
+    var w = wrap.offsetWidth;
+    var bw = noBtn.offsetWidth;
+    var maxX = w - bw - 4;
+    var x = Math.floor(Math.random() * maxX);
+    noBtn.style.right = 'auto';
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = (Math.random() > 0.5 ? '-22px' : '42px');
+    noBtn.style.transform = 'rotate(' + (Math.random()*24-12) + 'deg)';
+    noBtn.textContent = labels[Math.min(runCount, labels.length-1)];
+    noBtn.style.fontSize = Math.max(9, 13 - runCount) + 'px';
+    if (runCount >= 2) counter.textContent = 'Ran away ' + runCount + ' times haha';
   }
-}
+
+  function sayYes() {
+    document.getElementById('main').classList.add('off');
+    document.getElementById('success').classList.add('on');
+    launch();
+    setDefaultDate();
+    updateTimes();
+  }
+
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-content').forEach(function(t){ t.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function setDefaultDate() {
+    var d = new Date();
+    d.setDate(d.getDate() + 3);
+    var y = d.getFullYear();
+    var m = String(d.getMonth()+1).padStart(2,'0');
+    var day = String(d.getDate()).padStart(2,'0');
+    document.getElementById('dateInput').value = y+'-'+m+'-'+day;
+    document.getElementById('timeInput').value = '19:00';
+  }
+
+  function updateTimes() {
+    var dateVal = document.getElementById('dateInput').value;
+    var timeVal = document.getElementById('timeInput').value;
+    if (!dateVal || !timeVal) return;
+    var parts = dateVal.split('-');
+    var tparts = timeVal.split(':');
+    var fiDate = new Date(+parts[0], +parts[1]-1, +parts[2], +tparts[0], +tparts[1]);
+    document.getElementById('fi-time').textContent = String(fiDate.getHours()).padStart(2,'0') + ':' + String(fiDate.getMinutes()).padStart(2,'0');
+    var thDate = new Date(fiDate.getTime() + (4 * 60 * 60 * 1000));
+    document.getElementById('th-time').textContent = String(thDate.getHours()).padStart(2,'0') + ':' + String(thDate.getMinutes()).padStart(2,'0');
+  }
+
+  function pickFood(btn) {
+    document.querySelectorAll('.food-btn').forEach(function(b){ b.classList.remove('picked'); });
+    btn.classList.add('picked');
+    selectedFood = btn.textContent;
+  }
+
+  function confirmDate() {
+    var dateVal = document.getElementById('dateInput').value;
+    var timeVal = document.getElementById('timeInput').value;
+    if (!dateVal || !timeVal) { alert('Pick a date and time first!'); return; }
+    if (!selectedFood) { alert('Pick what food you are feeling!'); return; }
+    var parts = dateVal.split('-');
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var dateStr = parts[2] + ' ' + months[+parts[1]-1] + ' ' + parts[0];
+    var tparts = timeVal.split(':');
+    var fiDate = new Date(+parts[0], +parts[1]-1, +parts[2], +tparts[0], +tparts[1]);
+    var thDate = new Date(fiDate.getTime() + (4 * 60 * 60 * 1000));
+    var fiStr = String(fiDate.getHours()).padStart(2,'0') + ':' + String(fiDate.getMinutes()).padStart(2,'0');
+    var thStr = String(thDate.getHours()).padStart(2,'0') + ':' + String(thDate.getMinutes()).padStart(2,'0');
+
+    var confirmBtn = document.getElementById('confirmBtn');
+    var sendingMsg = document.getElementById('sendingMsg');
+    confirmBtn.disabled = true;
+    confirmBtn.textContent = 'Sending...';
+    sendingMsg.textContent = 'Letting him know...';
+
+    emailjs.send('service_em4lyh8', 'template_vudffim', {
+      to_email: 'Collorery95@gmail.com',
+      date: dateStr,
+      finland_time: fiStr + ' EET',
+      thailand_time: thStr + ' ICT',
+      food: selectedFood
+    }).then(function() {
+      var box = document.getElementById('confirmedBox');
+      box.innerHTML = '&#127881; Date confirmed!<br><br>&#128197; ' + dateStr + '<br>&#127467;&#127470; Finland: ' + fiStr + ' (EET)<br>&#127481;&#127469; Thailand: ' + thStr + ' (ICT)<br>' + selectedFood + ' night!<br><br>&#128140; He has been notified. See you soon!';
+      box.classList.add('on');
+      document.getElementById('pickerForm').style.display = 'none';
+      launch();
+    }, function(err) {
+      confirmBtn.disabled = false;
+      confirmBtn.textContent = 'Confirm our date! &#127801;';
+      sendingMsg.textContent = 'Something went wrong. Try again!';
+    });
+  }
+
+  function launch() {
+    var items = ['&#10084;','&#127881;','&#127801;','&#10024;','&#128149;'];
+    for (var i = 0; i < 24; i++) {
+      (function(i) {
+        setTimeout(function() {
+          var el = document.createElement('div');
+          el.className = 'confetti-piece';
+          el.innerHTML = items[Math.floor(Math.random() * items.length)];
+          el.style.left = Math.random() * 100 + 'vw';
+          el.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+          document.body.appendChild(el);
+          setTimeout(function() { el.remove(); }, 3500);
+        }, i * 80);
+      })(i);
+    }
+  }
 </script>
+</body>
+</html>
